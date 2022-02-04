@@ -10,16 +10,16 @@ export default function Home() {
     const navigate = useNavigate();
 
 
-/*     useEffect(() => {
+    useEffect(() => {
         if (!auth || !auth.token) {
-          navigate("/");
-          return;
-        }
+        navigate("/");
+        return;
+        } 
     
         handleLoadPage();
-      }, []); */
+      }, []);
 
-    async function handleLoadPage() {
+      async function handleLoadPage() {
         try {
           const responseUser = await api.getUser(auth.token);
           setUser(responseUser.data);
@@ -34,6 +34,7 @@ export default function Home() {
     if (isLoading) {
     return <h1>Carregando...</h1>;
     }
+
 return (
     <>
     </>

@@ -14,8 +14,7 @@ export default function Login() {
     }) 
     
     const navigate = useNavigate()
-    const { auth, login } = useAuth();
-
+    const { auth, login } = useAuth(); 
 
     useEffect(() => {
         if (auth && auth.token) {
@@ -27,7 +26,8 @@ export default function Login() {
     async function handleLogin(body) {
 
         try {
-            const data = await api.login(body)
+            const {data} = await api.login(body)
+            console.log(data)
             login(data)
             navigate('/home')
             
