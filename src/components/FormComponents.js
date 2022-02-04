@@ -2,20 +2,14 @@ import { Link } from "react-router-dom";
 import styled from "styled-components"
 
 const Container = styled.div`
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   justify-content: center;
 
- /*  img{
-    margin-top: 65px;
-  }
-
-  @media screen and (min-width: 800px) {
-    img{
-      margin-top: 100px;
-    }
-  } */
 `
 
 const Form = styled.form`
@@ -39,8 +33,9 @@ const Input = styled.input`
   font-size: 20px;
   line-height: 23px;
 
-  &::placeholder{
+  ::placeholder {
     color: #000000;
+    opacity: 1;
   }
 `
 

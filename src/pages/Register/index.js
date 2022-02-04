@@ -1,46 +1,65 @@
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup'
+import {registerSchema} from '../../validation/formValidation'
+import api from "../../services/api";
 import Logo from '../../assets/logo.png'
 import { Container, Form, Input, Button, StyledLink } from "../../components/FormComponents";
 
 export default function Register() {
+    const { register, handleSubmit, formState:{ errors } } = useForm({
+        resolver: yupResolver(registerSchema)
+    }) 
+    const navigate = useNavigate()
 
+    async function handleRegister(body) {
+        if (body.password !== body.samePass) {
+            alert('As senhas não conferem')
+        } else{
+            delete body.samePass
+        }
+
+        try {
+          await api.registerUser(body)
+          navigate("/");
+        } catch (error) {
+          alert('Erro, tente novamente');
+        }
+      }
 
     return (
+        
         <Container>
             <img alt="logo" src={Logo} />
 
-            <Form /* onSubmit={handleSubmit} */>
+            <Form onSubmit={handleSubmit((body) => handleRegister(body))}>
                 <Input
+                    {...register ('name')}
                     type="text"
                     placeholder="Nome"
                     name="name"
-                   /*  onChange={handleChange}
-                    value={formData.password} */
                 />
+                <p>{errors.name?.message}</p>
                 <Input
-                    type="email"
+                    {...register ('email')}
+                    type="text"
                     placeholder="E-mail"
                     name="email"
-                   /*  onChange={handleChange}
-                    value={formData.email} */
                 />
+                <p>{errors.email?.message}</p>
                 <Input
+                    {...register ('password')}
                     type="password"
                     placeholder="Senha"
                     name="password"
-                   /*  onChange={handleChange}
-                    value={formData.email} */
                 />
+                <p>{errors.password?.message}</p>
                 <Input
+                    {...register ('samePass')}
                     type="password"
                     placeholder="Confirme a Senha"
-                    name="password"
-                   /*  onChange={handleChange}
-                    value={formData.email} */
+                    name="samePass"
                 />
-                
-                
                 <Button>
                     Cadastrar
                 </Button>
