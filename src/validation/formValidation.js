@@ -12,7 +12,13 @@ const loginSchema = yup.object().shape({
     password: yup.string().required('Campo senha é obrigatório'),
 }).required()
 
+const exitAndRegisterSchema = yup.object().shape({
+    value: yup.number().typeError('Insira um valor').required(),
+    text: yup.string().required('Insira uma descrição'),
+}).required()
+
 export {
     registerSchema,
-    loginSchema
+    loginSchema,
+    exitAndRegisterSchema
 }

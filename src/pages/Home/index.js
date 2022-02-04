@@ -2,6 +2,13 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import api from "../../services/api";
 import useAuth from "../../hooks/useAuth";
+import  {
+  Container,
+  Top,
+  Mid,
+  Botton,
+  RegisterButton
+} from "../../components/UserComponents"
 
 export default function Home() {
     const [user, setUser] = useState(null);
@@ -36,8 +43,27 @@ export default function Home() {
     }
 
 return (
-    <>
-    </>
+   <Container>
+     <Top>
+        <p>Ola, Fulano</p>
+        <ion-icon name="log-out-outline"></ion-icon>
+     </Top>
+     <Mid>
+        <p>Não há registros de<br/>
+            entrada ou saída</p>
+     </Mid>
+     <Botton>
+       <RegisterButton>
+          <ion-icon name="add-circle-outline"></ion-icon>
+          <p>Nova <br /> entrada</p>
+       </RegisterButton>
+       <RegisterButton>
+          <ion-icon name="remove-circle-outline"></ion-icon>
+          <p>Nova <br /> saída</p>
+       </RegisterButton>
+
+     </Botton>
+   </Container>
 )
 
 }
