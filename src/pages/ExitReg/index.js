@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup'
 import api from "../../services/api";
+import useAuth from "../../hooks/useAuth";
+
 
 import { exitAndRegisterSchema } from '../../validation/formValidation'
 import  {
@@ -21,10 +23,13 @@ export default function ExitReg(){
     
     const navigate = useNavigate()
 
-    async function handleExitReg(body) {
+    const { auth } = useAuth();
 
+
+    async function handleExitReg(body) {
+        body.value = "D" + body.value
         try {
-            await api.ExitReg(body)
+            await api.entrace(body, auth.token)
 
             navigate('/home')
             

@@ -27,10 +27,30 @@ function getUser(token) {
   return promise;
 }
 
+/* function extract(token) {
+  const config = createConfig(token);
+
+  const promise = axios.get(`${BASE_URL}/extract`, config);
+
+  return promise;
+} */
+
+function entrace(body, token) {
+  const config = createConfig(token);
+  const obj =[body , config]
+
+  const promise = axios.put(`${BASE_URL}/entrace`, body,config);
+
+  return promise;
+}
+
+
 const api = {
   registerUser,
   login,
-  getUser
+  getUser,
+/*   extract, */
+  entrace
 }
 
 export default api;

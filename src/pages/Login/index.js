@@ -27,7 +27,6 @@ export default function Login() {
 
         try {
             const {data} = await api.login(body)
-            console.log(data)
             login(data)
             navigate('/home')
             

@@ -38,11 +38,12 @@ const Mid = styled.div`
     padding: 15px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: ${(props) => props.haveBody ? "flex-start" : "center"};
     background: #FFFFFF;
     border-radius: 5px;
 
     p{
+        display: ${(props) => props.haveBody ? "none" : ""};
         font-family: Raleway;
         font-size: 20px;
         font-style: normal;
@@ -52,6 +53,39 @@ const Mid = styled.div`
         text-align: center;
         color: #868686;
     }
+    object{
+        z-index: 2;
+        position: absolute;
+        top:73%;
+        width:83.9%;
+        height:35px;
+        display:flex;
+        justify-content: space-between;
+        background-color: white;
+
+    }
+    h3{
+        font-family: Raleway;
+        font-size: 17px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 20px;
+        letter-spacing: 0em;
+        text-align: left;
+        color: #000000;
+
+    }
+    h4{
+        font-family: Raleway;
+        font-size: 17px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 0em;
+        text-align: right; 
+        color:${(props) => props.negOrPosi ? "#03AC00" : "#C70000"}; 
+    }
+    
 
 `
 const Botton = styled.div`
@@ -135,6 +169,38 @@ const Form = styled.form`
     
  
 `
+const Mov =styled.div `
+    display: flex;
+    justify-content:space-between;
+    margin-top: 20px;
+
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+`
+const Descr = styled.div `
+display: flex;
+    h1{
+        width: 48px;
+        margin-right: 8px;
+        display: flex;
+        justify-content: center;
+        color: #C6C6C6;
+    }
+`
+const Value = styled.div `
+    color: ${(props) => props.op ? "#03AC00" : "#C70000"};
+`
+const Extract = styled.div `
+    white-space: nowrap;
+    overflow-x:scroll;
+    overflow-y:hidde;
+    position: relative;
+    -webkit-transform: translateZ(0);
+`
 
 export {
     Container,
@@ -144,5 +210,9 @@ export {
     RegisterButton,
     Form,
     Input,
-    Button
+    Button,
+    Mov,
+    Descr,
+    Value,
+    Extract
 }

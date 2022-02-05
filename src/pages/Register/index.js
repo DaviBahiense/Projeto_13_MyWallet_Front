@@ -15,6 +15,7 @@ export default function Register() {
     async function handleRegister(body) {
         if (body.password !== body.samePass) {
             alert('As senhas não conferem')
+            return
         } else{
             delete body.samePass
         }
