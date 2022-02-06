@@ -49,6 +49,7 @@ export default function ExitReg(){
                 <Input
                     {...register ('value')}
                     type="number"
+                    step="0.01"
                     placeholder="Valor"
                     name="value"
                 />

@@ -36,43 +36,45 @@ export default function Home() {
     return <h1>Carregando...</h1>;
     }
 
-let data = user.movimentation
-let mov = []
-for (let i = 0; i < data.length; i++) {
-  let clearC =data[i].value.replace("C", '')
-  let clearD =data[i].value.replace("D", '')
-  
-  if (data[i].value.includes("C")){
-    mov.push({
-      day: data[i].day,
-      text: data[i].text,
-      value: clearC,
-      op: true,
-      id: i
-    }) 
-  } else{
-    mov.push({
-      day: data[i].day,
-      text: data[i].text,
-      value: clearD,
-      op: false,
-      id: i
-    }) 
-  }
-}
-let total = 0
-mov.map((i) =>(i.op? total += parseFloat(i.value) : total -= parseFloat(i.value)) )
+  let total = 0
+  let mov = []
+  let data = user.movimentation
+if(data){
+    for (let i = 0; i < data.length; i++) {
+      let clearC =data[i].value.replace("C", '')
+      let clearD =data[i].value.replace("D", '')
+      
+      if (data[i].value.includes("C")){
+        mov.push({
+          day: data[i].day,
+          text: data[i].text,
+          value: clearC,
+          op: true,
+          id: i
+        }) 
+      } else{
+        mov.push({
+          day: data[i].day,
+          text: data[i].text,
+          value: clearD,
+          op: false,
+          id: i
+        }) 
+      }
+    }
+    
+    mov.map((i) =>(i.op? total += parseFloat(i.value) : total -= parseFloat(i.value)) )
+    }
+    let negOrPosi = boolean
+    if (total > 0) {
+      negOrPosi = true
+    }else{ negOrPosi = false}
 
-let negOrPosi = boolean
-if (total > 0) {
-  negOrPosi = true
-}else{ negOrPosi = false}
-
-function enter() { navigate("/enterreg")}
-function out() { navigate("/exitreg")}
-function singOut() {
-    logOut()
-    navigate("/")
+    function enter() { navigate("/enterreg")}
+    function out() { navigate("/exitreg")}
+    function singOut() {
+        logOut()
+        navigate("/")
 }
 return (
    <Container>
@@ -80,7 +82,7 @@ return (
         <p>Ola, {user.name}</p>
         <ion-icon name="log-out-outline" onClick={singOut}></ion-icon>
      </Top>
-     <Mid haveBody={mov} negOrPosi={negOrPosi}>
+     <Mid haveBody={data} negOrPosi={negOrPosi}>
         <Extract>
           {mov.map((info)=>(
               <Mov key={info.id}>
@@ -93,7 +95,7 @@ return (
                   {info.value}
                 </Value>
               </Mov>
-          ))}
+          ))} 
         </Extract>
           <object>
             <h3>Saldo</h3>

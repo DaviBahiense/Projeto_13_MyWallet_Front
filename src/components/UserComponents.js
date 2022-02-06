@@ -35,7 +35,7 @@ const Top = styled.div`
 const Mid = styled.div`
     width: 100%;
     height: 446px;
-    padding: 15px;
+    padding: 15px 15px 45px 15px;
     display: flex;
     flex-direction: column;
     justify-content: ${(props) => props.haveBody ? "flex-start" : "center"};
@@ -200,6 +200,7 @@ const Extract = styled.div `
     overflow-y:hidde;
     position: relative;
     -webkit-transform: translateZ(0);
+    
 `
 
 export {

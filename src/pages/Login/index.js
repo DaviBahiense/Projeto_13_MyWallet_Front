@@ -16,11 +16,11 @@ export default function Login() {
     const navigate = useNavigate()
     const { auth, login } = useAuth(); 
 
-    useEffect(() => {
+    /* useEffect(() => {
         if (auth && auth.token) {
           navigate("/home");
         }
-    }, [])
+    }, []) */
     
 
     async function handleLogin(body) {
