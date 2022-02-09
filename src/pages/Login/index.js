@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup'
 import { loginSchema } from '../../validation/formValidation'
@@ -14,14 +13,8 @@ export default function Login() {
     }) 
     
     const navigate = useNavigate()
-    const { auth, login } = useAuth(); 
-
-    /* useEffect(() => {
-        if (auth && auth.token) {
-          navigate("/home");
-        }
-    }, []) */
-    
+    const { login } = useAuth(); 
+   
 
     async function handleLogin(body) {
 

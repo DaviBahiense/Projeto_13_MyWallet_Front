@@ -10,13 +10,14 @@ export default function Home() {
     const { auth, logOut } = useAuth();
     const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
-
+    
     useEffect(() => {
         if (!auth || !auth.token) {
         navigate("/");
         return;
         } 
         handleLoadPage()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
       }, []);
 
       async function handleLoadPage() {
@@ -92,7 +93,7 @@ return (
                 </Descr>
 
                 <Value op={info.op}>
-                  {info.value}
+                  {parseFloat(info.value).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                 </Value>
               </Mov>
           ))} 
@@ -100,7 +101,7 @@ return (
           <object>
             <h3>Saldo</h3>
             <h4>
-              {Math.abs(total)}
+              {Math.abs(total).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
             </h4>
           </object>
         <p>Não há registros de<br/>
