@@ -35,10 +35,10 @@ const Top = styled.div`
 const Mid = styled.div`
     width: 100%;
     height: 446px;
-    padding: 15px 15px 45px 15px;
+    padding: 15px 15px 0px 15px;
     display: flex;
     flex-direction: column;
-    justify-content: ${(props) => props.haveBody ? "flex-start" : "center"};
+    justify-content: ${(props) => props.haveBody ? "space-between" : "center"};
     background: #FFFFFF;
     border-radius: 5px;
 
@@ -54,13 +54,11 @@ const Mid = styled.div`
         color: #868686;
     }
     object{
-        z-index: 2;
-        position: absolute;
-        top:73%;
-        width:83.9%;
-        height:35px;
+        width:100%;
+        height:45px;
         display:flex;
         justify-content: space-between;
+        align-items: center;
         background-color: white;
 
     }
