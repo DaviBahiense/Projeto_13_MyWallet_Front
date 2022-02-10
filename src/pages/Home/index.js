@@ -84,7 +84,7 @@ return (
         <ion-icon name="log-out-outline" onClick={singOut}></ion-icon>
      </Top>
      <Mid haveBody={data} negOrPosi={negOrPosi}>
-        <Extract>
+        <Extract haveBody={data}>
           {mov.map((info)=>(
               <Mov key={info.id}>
                 <Descr>
@@ -97,6 +97,8 @@ return (
                 </Value>
               </Mov>
           ))} 
+          <p>Não há registros de<br/>
+            entrada ou saída</p>
         </Extract>
           <object>
             <h3>Saldo</h3>
@@ -104,8 +106,7 @@ return (
               {Math.abs(total).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
             </h4>
           </object>
-        <p>Não há registros de<br/>
-            entrada ou saída</p>
+        
      </Mid>
      <Botton>
        <RegisterButton onClick={enter}>

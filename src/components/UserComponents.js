@@ -38,7 +38,7 @@ const Mid = styled.div`
     padding: 15px 15px 0px 15px;
     display: flex;
     flex-direction: column;
-    justify-content: ${(props) => props.haveBody ? "space-between" : "center"};
+    justify-content: space-between;
     background: #FFFFFF;
     border-radius: 5px;
 
@@ -168,6 +168,7 @@ const Form = styled.form`
  
 `
 const Mov =styled.div `
+    width: 100%;
     display: flex;
     justify-content:space-between;
     margin-top: 20px;
@@ -193,12 +194,17 @@ const Value = styled.div `
     color: ${(props) => props.op ? "#03AC00" : "#C70000"};
 `
 const Extract = styled.div `
+    height: 100%;
+    width: 100%;
     white-space: nowrap;
     overflow-x:scroll;
     overflow-y:hidde;
     position: relative;
     -webkit-transform: translateZ(0);
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:${(props) => props.haveBody ? " flex-start" : "center"};
 `
 
 export {
