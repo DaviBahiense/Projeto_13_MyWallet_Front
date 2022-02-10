@@ -203,8 +203,8 @@ const Extract = styled.div `
     -webkit-transform: translateZ(0);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items:${(props) => props.haveBody ? " flex-start" : "center"};
+    justify-content: ${(props) => props.haveBody ? " flex-start" : "center"};
+
 `
 
 export {
