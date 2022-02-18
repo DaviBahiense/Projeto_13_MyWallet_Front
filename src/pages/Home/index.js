@@ -4,6 +4,7 @@ import api from "../../services/api";
 import useAuth from "../../hooks/useAuth";
 import  { Container, Top, Mid, Botton, RegisterButton, Mov, Descr, Value, Extract } from "../../components/UserComponents"
 import { boolean } from "yup";
+import Swal from "sweetalert2"
 
 export default function Home() {
     const [user, setUser] = useState(null);
@@ -77,6 +78,35 @@ if(data){
         logOut()
         navigate("/")
 }
+
+async function deleteItem(id) {
+
+  try {
+
+      await Swal.fire({
+          title: 'Você realmente deseja deletar este registro?',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#03AC00',
+          cancelButtonColor: '#C70000',
+          confirmButtonText: 'Sim',
+          cancelButtonText: 'Não'
+      }).then(async (result) => {
+          if (result.isConfirmed) {
+              await api.deleteRegistry(id, auth);
+              handleLoadPage()
+          }
+      })
+
+  } catch (error) {
+      Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${error.response.data}`,
+      })
+  }
+}
+
 return (
    <Container>
      <Top>
@@ -94,6 +124,7 @@ return (
 
                 <Value op={info.op}>
                   {parseFloat(info.value).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                  <div className="delete" onClick={() => deleteItem(info._id)} >x</div>
                 </Value>
               </Mov>
           ))} 

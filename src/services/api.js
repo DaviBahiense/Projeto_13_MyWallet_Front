@@ -38,12 +38,21 @@ function entrace(body, token) {
   return promise;
 }
 
+function deleteRegistry(id, token) {
+  const config = createConfig(token);
+
+  const promise = axios.delete(`${BASE_URL}/carteira/${id}`, config);
+
+  return promise;
+}
+
 
 const api = {
   registerUser,
   login,
   getUser,
-  entrace
+  entrace,
+  deleteRegistry
 }
 
 export default api;
