@@ -124,7 +124,7 @@ return (
 
                 <Value op={info.op}>
                   {parseFloat(info.value).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
-                  <div className="delete" onClick={() => deleteItem(info._id)} >x</div>
+                 // <div className="delete" onClick={() => deleteItem(info._id)} >x</div>
                 </Value>
               </Mov>
           ))} 
