@@ -79,7 +79,7 @@ if(data){
         navigate("/")
 }
 
-async function deleteItem(id) {
+/*async function deleteItem(id) {
 
   try {
 
@@ -105,7 +105,7 @@ async function deleteItem(id) {
           text: `${error.response.data}`,
       })
   }
-}
+}*/
 
 return (
    <Container>
@@ -124,7 +124,7 @@ return (
 
                 <Value op={info.op}>
                   {parseFloat(info.value).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
-                 // <div className="delete" onClick={() => deleteItem(info._id)} >x</div>
+                  <div className="delete" onClick={() => deleteItem(info._id)} ></div>
                 </Value>
               </Mov>
           ))} 
